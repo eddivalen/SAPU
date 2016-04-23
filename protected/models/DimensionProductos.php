@@ -49,8 +49,12 @@ class DimensionProductos extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'pedidoProductos' => array(self::HAS_MANY, 'PedidoProducto', 'dmp_pro_codigo'),
-			'pedidoProductos1' => array(self::HAS_MANY, 'PedidoProducto', 'dmp_dmo_codigo'),
+			'dmpProCodigo' => array(self::HAS_MANY, 'PedidoProducto', 'dmp_pro_codigo'),
+			'dmpDmoCodigo' => array(self::HAS_MANY, 'PedidoProducto', 'dmp_dmo_codigo'),
+			'dmoCodigo' => array(self::BELONGS_TO, 'Dimensiones', 'dmo_codigo'),
+			'proCodigo' => array(self::BELONGS_TO, 'Productos', 'pro_codigo'),
+			
+
 		);
 	}
 

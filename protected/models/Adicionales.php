@@ -4,53 +4,27 @@
 
 
 /**
- * This is the model class for table "dimensiones".
+ * This is the model class for table "adicionales".
  *
- * The followings are the available columns in table 'dimensiones':
- * @property integer $codigo
- * @property string $descripcion
+ * The followings are the available columns in table 'adicionales':
+ * @property double $precio_p
+ * @property double $precio_m
+ * @property double $precio_g
+ * @property integer $ppo_codigo
+ * @property integer $ige_codigo
  *
  * The followings are the available model relations:
- * @property DimensionIngredientes $dimensionIngredientes
- * @property DimensionProductos[] $dimensionProductoses
+ * @property Ingredientes $igeCodigo
+ * @property PedidoProducto $ppoCodigo
  */
-class Dimensiones extends CActiveRecord
+class Adicionales extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
-
-
-    	private static $_items=array();
-	
-	public static function items($tipo){
- // Devuelve todos los ítems que forman el arreglo
-    	if(!isset(self::$_items[$tipo]))
-        self::loadItems($tipo);
-        return self::$_items[$tipo];
-    }
-
-    public static function item($tipo, $id){
- // Devuelve el ítem al que le corresponde el id
-    	if(!isset(self::$_items[$tipo]))
-  			self::loadItems($tipo);
- 			
- 		return isset(self::$_items[$tipo][$id]) ? self::$_items[$tipo][$id] : false;
-    }
-
-private static function loadItems($tipo){
- // Obtiene los registros
-	self::$_items[$tipo]=array();
-	$models=self::model()->findAll(array('order'=>'descripcion'));
-   // self::$_items[$tipo][""]=""; // Descomentar para incluir un campo en blanco al inicio, para cuando el campo puede ser nulo
-    foreach($models as $model){
-    	self::$_items[$tipo][$model->codigo]=$model->descripcion;
-    }
-}
-
 	public function tableName()
 	{
-		return 'dimensiones';
+		return 'adicionales';
 	}
 
 	/**
@@ -61,12 +35,12 @@ private static function loadItems($tipo){
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('descripcion', 'required'),
-			array('codigo', 'numerical', 'integerOnly'=>true),
-			array('descripcion', 'length', 'max'=>45),
+			array('ppo_codigo, ige_codigo', 'required'),
+			array('ppo_codigo, ige_codigo', 'numerical', 'integerOnly'=>true),
+			array('precio_p, precio_m, precio_g', 'numerical'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('codigo, descripcion', 'safe', 'on'=>'search'),
+			array('precio_p, precio_m, precio_g, ppo_codigo, ige_codigo', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,8 +52,8 @@ private static function loadItems($tipo){
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'dimensionIngredientes' => array(self::HAS_ONE, 'DimensionIngredientes', 'dmo_codigo'),
-			'dimensionProductoses' => array(self::HAS_MANY, 'DimensionProductos', 'dmo_codigo'),
+			'igeCodigo' => array(self::BELONGS_TO, 'Ingredientes', 'ige_codigo'),
+			'ppoCodigo' => array(self::BELONGS_TO, 'PedidoProducto', 'ppo_codigo'),
 		);
 	}
 
@@ -90,8 +64,11 @@ private static function loadItems($tipo){
 public function attributeLabels()
 {
     return array(
-            'codigo' => Yii::t('application', 'Codigo'),
-            'descripcion' => Yii::t('application', 'Descripcion'),
+            'precio_p' => Yii::t('application', 'Precio P'),
+            'precio_m' => Yii::t('application', 'Precio M'),
+            'precio_g' => Yii::t('application', 'Precio G'),
+            'ppo_codigo' => Yii::t('application', 'Ppo Codigo'),
+            'ige_codigo' => Yii::t('application', 'Ige Codigo'),
     );
 }
 
@@ -114,8 +91,11 @@ public function attributeLabels()
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('codigo',$this->codigo);
-		$criteria->compare('descripcion',$this->descripcion,true);
+		$criteria->compare('precio_p',$this->precio_p);
+		$criteria->compare('precio_m',$this->precio_m);
+		$criteria->compare('precio_g',$this->precio_g);
+		$criteria->compare('ppo_codigo',$this->ppo_codigo);
+		$criteria->compare('ige_codigo',$this->ige_codigo);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -126,7 +106,7 @@ public function attributeLabels()
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Dimensiones the static model class
+	 * @return Adicionales the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
