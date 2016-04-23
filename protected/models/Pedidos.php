@@ -58,7 +58,8 @@ class Pedidos extends CActiveRecord
 	{
 		return array(
 			'codigo' => 'Codigo',
-			'pna_id_persona' => 'Nombre Persona',
+			'pna_id_persona' => 'Cedula Persona',
+			'nombre'=>'Nombre Persona',
 			'fecha' => 'Fecha',
 		);
 	}

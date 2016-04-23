@@ -155,8 +155,8 @@ class UsuariosController extends Controller
 	public function actionAutocomplete($term) 
 	{
 	 $criteria = new CDbCriteria;
-	 $criteria->compare('LOWER(nombre)', strtolower($_GET['term']), true);
-	 $criteria->order = 'nombre';
+	 $criteria->compare('LOWER(cedula)', strtolower($_GET['term']), true);
+	 $criteria->order = 'cedula';
 	 $criteria->limit = 30; 
 	 $data = Personas::model()->findAll($criteria);
 
@@ -166,8 +166,8 @@ class UsuariosController extends Controller
 	  foreach ($data as $item) {
 	   $arr[] = array(
 	    'id' => $item->id_persona,
-	    'value' => $item->nombre,
-	    'label' => $item->nombre,
+	    'value' => $item->cedula,
+	    'label' => $item->cedula,
 	   );
 	  }
 	 }
