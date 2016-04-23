@@ -49,7 +49,32 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha'); ?>
-		<?php echo $form->textField($model,'fecha'); ?>
+		<?php
+		  $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		   'model'=>$model,
+		   'attribute'=>'fecha',
+		   'value'=>$model->fecha,
+		   'language' => 'es',
+		   'htmlOptions' => array('readonly'=>"readonly"),
+		   'options'=>array(
+		    'autoSize'=>true,
+		    'defaultDate'=>$model->fecha,
+		    'dateFormat'=>'yy-mm-dd',
+		    'buttonImage'=>Yii::app()->baseUrl.'/images/calendario.png',
+		    'buttonImageOnly'=>true,
+		    'buttonText'=>'Fecha',
+		    'selectOtherMonths'=>true,
+		    'showAnim'=>'slide',
+		    'showButtonPanel'=>true,
+		    'showOn'=>'button', 
+		    'showOtherMonths'=>true, 
+		    'changeMonth' => 'true', 
+		    'changeYear' => 'true', 
+		    'minDate'=>'date("Y-m-d")', 
+		    'maxDate'=> "+20Y",
+		    ),
+		  )); 
+		 ?>
 		<?php echo $form->error($model,'fecha'); ?>
 	</div>
 
