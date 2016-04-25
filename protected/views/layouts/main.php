@@ -39,8 +39,6 @@
 		$cajero = (isset($rol->roe_id) and $rol->roe_id == 2) ? true : false ;
 		$this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Tipo Usuario', 'url'=>array('/tipoUsuario'), 'visible'=>$admin),
 				array('label'=>'Personas', 'url'=>array('/personas'), 'visible'=>$admin),
 				array('label'=>'Usuarios', 'url'=>array('/usuarios'), 'visible'=>$admin),
 				array('label'=>'Pedidos', 'url'=>array('/pedidos'), 'visible'=>$admin),
@@ -57,8 +55,11 @@
                 array('label'=>'Modulos', 'url'=>array('/modulos'), 'visible'=>$admin),
                 array('label'=>'Rol y Modulo', 'url'=>array('/rolesModulos'), 'visible'=>$admin),
                 array('label'=>'Rol y Usuario', 'url'=>array('/rolesUsuario'), 'visible'=>$admin),
-                array('label'=>'Pedidos Cajero', 'url'=>array('/pedidos'), 'visible'=>$cajero),
                 
+                array('label'=>'Pedidos Cajero', 'url'=>array('/pedidos'), 'visible'=>$cajero),
+                array('label'=>'Personas', 'url'=>array('/personas'), 'visible'=>$cajero),
+                array('label'=>'Productos', 'url'=>array('/productos'), 'visible'=>$cajero),
+                array('label'=>'Facturar', 'url'=>array('/pedidoProducto'), 'visible'=>$cajero),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),
 		)); ?>
@@ -73,11 +74,9 @@
 
 	<div class="clear"></div>
 
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by Uno Pizzeria.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+	<div id="footer footer-basic-centered footer-company-name">
+		<p class="footer-company-name">Pizzería 2015. Todos los derechos reservados &copy;</p>
+
 
 </div><!-- page -->
 

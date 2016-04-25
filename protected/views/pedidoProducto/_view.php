@@ -26,12 +26,11 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('dmp_pro_codigo')); ?>:</b>
-	<?php echo CHtml::encode($data->dmp_pro_codigo); ?>
+	<?php echo CHtml::encode($data->dmpProCodigo->proCodigo->descripcion); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('dmp_dmo_codigo')); ?>:</b>
-	<?php echo CHtml::encode($data->dmp_dmo_codigo); ?>
+	<?php echo CHtml::encode($data->dmpDmoCodigo->dmoCodigo->descripcion); ?>
 	<br />
-
 
 </div>

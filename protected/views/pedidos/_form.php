@@ -32,7 +32,7 @@
 		    'options'=> array(
 		      'showAnim'=>'fold',
 		      'size'=>'30',
-		      'minLength'=>'3', // Minimo de caracteres que hay que digitar antes de relizar la busqueda
+		      'minLength'=>'1', // Minimo de caracteres que hay que digitar antes de relizar la busqueda
 		      'select'=>"js:function(event, ui) { 
 		       $('#Pedidos_pna_id_persona').val(ui.item.id); // HTML-Id del campo
 		       }"

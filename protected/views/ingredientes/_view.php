@@ -22,8 +22,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('und_codigo')); ?>:</b>
-	<?php echo CHtml::encode($data->und_codigo); ?>
+	<?php echo CHtml::encode($data->undCodigo->descripcion); ?>
 	<br />
-
 
 </div>

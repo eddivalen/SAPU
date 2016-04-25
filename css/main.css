@@ -5,6 +5,7 @@ body
 	color: #555;
 	font: normal 10pt Arial,Helvetica,sans-serif;
 	background: #EFEFEF;
+	background-color: #009966;
 }
 
 #page
@@ -227,3 +228,23 @@ div.search-form
 {
 	background: #80CFFF;
 }
+
+.footer-basic-centered{
+	background-color: #009966;
+	/*box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);*/
+	box-sizing: border-box;
+	width: 100%;
+	text-align: center;
+	font: normal 18px sans-serif;
+
+/*	padding: 45px;
+	margin-top: 80px;*/
+}
+
+.footer-basic-centered .footer-company-name{
+	color:  #fff;
+	font-size: 18px;
+	margin: 0;
+}
+
+

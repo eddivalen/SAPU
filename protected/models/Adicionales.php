@@ -64,11 +64,11 @@ class Adicionales extends CActiveRecord
 public function attributeLabels()
 {
     return array(
-            'precio_p' => Yii::t('application', 'Precio P'),
-            'precio_m' => Yii::t('application', 'Precio M'),
-            'precio_g' => Yii::t('application', 'Precio G'),
-            'ppo_codigo' => Yii::t('application', 'Ppo Codigo'),
-            'ige_codigo' => Yii::t('application', 'Ige Codigo'),
+            'precio_p' => Yii::t('application', 'Precio Pequeño'),
+            'precio_m' => Yii::t('application', 'Precio Mediano'),
+            'precio_g' => Yii::t('application', 'Precio Grande'),
+            'ppo_codigo' => Yii::t('application', 'Codigo del pedido'),
+            'ige_codigo' => Yii::t('application', 'Codigo del ingrediente'),
     );
 }
 

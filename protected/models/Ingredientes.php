@@ -39,15 +39,15 @@ class Ingredientes extends CActiveRecord
  		return isset(self::$_items[$tipo][$id]) ? self::$_items[$tipo][$id] : false;
     }
 
-private static function loadItems($tipo){
- // Obtiene los registros
-	self::$_items[$tipo]=array();
-	$models=self::model()->findAll(array('order'=>'descripcion'));
-   // self::$_items[$tipo][""]=""; // Descomentar para incluir un campo en blanco al inicio, para cuando el campo puede ser nulo
-    foreach($models as $model){
-    	self::$_items[$tipo][$model->codigo]=$model->descripcion;
-    }
-}
+	private static function loadItems($tipo){
+	 // Obtiene los registros
+		self::$_items[$tipo]=array();
+		$models=self::model()->findAll(array('order'=>'descripcion'));
+	   // self::$_items[$tipo][""]=""; // Descomentar para incluir un campo en blanco al inicio, para cuando el campo puede ser nulo
+	    foreach($models as $model){
+	    	self::$_items[$tipo][$model->codigo]=$model->descripcion;
+	    }
+	}
      /// Lista desplegable
 	public function tableName()
 	{
@@ -96,7 +96,7 @@ private static function loadItems($tipo){
 			'descripcion' => 'Descripcion',
 			'cantidad' => 'Cantidad',
 			'tipo' => 'Tipo',
-			'und_codigo' => 'Und Codigo',
+			'und_codigo' => 'Unidad de medida',
 		);
 	}
 

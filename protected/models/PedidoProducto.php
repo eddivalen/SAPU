@@ -26,6 +26,34 @@ class PedidoProducto extends CActiveRecord
 	/**
 	 * @return string the associated database table name
 	 */
+		/// lista desplegable
+	private static $_items=array();
+	
+	public static function items($tipo){
+ // Devuelve todos los ítems que forman el arreglo
+    	if(!isset(self::$_items[$tipo]))
+        self::loadItems($tipo);
+        return self::$_items[$tipo];
+    }
+
+    public static function item($tipo, $id){
+ // Devuelve el ítem al que le corresponde el id
+    	if(!isset(self::$_items[$tipo]))
+  			self::loadItems($tipo);
+ 			
+ 		return isset(self::$_items[$tipo][$id]) ? self::$_items[$tipo][$id] : false;
+    }
+
+	private static function loadItems($tipo){
+	 // Obtiene los registros
+		self::$_items[$tipo]=array();
+		$models=self::model()->findAll(array('order'=>'codigo'));
+	   // self::$_items[$tipo][""]=""; // Descomentar para incluir un campo en blanco al inicio, para cuando el campo puede ser nulo
+	    foreach($models as $model){
+	    	self::$_items[$tipo][$model->codigo]=$model->codigo;
+	    }
+	}
+
 	public function tableName()
 	{
 		return 'pedido_producto';
@@ -75,9 +103,9 @@ public function attributeLabels()
             'cantidad' => Yii::t('application', 'Cantidad'),
             'detalles' => Yii::t('application', 'Detalles'),
             'impuesto' => Yii::t('application', 'Impuesto'),
-            'pdo_codigo' => Yii::t('application', 'Pdo Codigo'),
-            'dmp_pro_codigo' => Yii::t('application', 'Dmp Pro Codigo'),
-            'dmp_dmo_codigo' => Yii::t('application', 'Dmp Dmo Codigo'),
+            'pdo_codigo' => Yii::t('application', 'Codigo del pedido'),
+            'dmp_pro_codigo' => Yii::t('application', 'Nombre del producto'),
+            'dmp_dmo_codigo' => Yii::t('application', 'Dimension del producto'),
     );
 }
 

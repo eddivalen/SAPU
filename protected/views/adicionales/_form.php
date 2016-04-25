@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -39,13 +39,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ppo_codigo'); ?>
-		<?php echo $form->textField($model,'ppo_codigo'); ?>
+		<?php echo $form->dropDownList($model, 'ppo_codigo', PedidoProducto::items(1)); ?>
 		<?php echo $form->error($model,'ppo_codigo'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'ige_codigo'); ?>
-		<?php echo $form->textField($model,'ige_codigo'); ?>
+		<?php echo $form->dropDownList($model, 'ige_codigo', Ingredientes::items(1)); ?>
 		<?php echo $form->error($model,'ige_codigo'); ?>
 	</div>
 
